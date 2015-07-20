@@ -42,6 +42,8 @@ site.init({
 
   // The name property can also refer to a module, in the case of 'blog', 'map', 'events', etc.
 
+
+
   pages: {
     types: [
       { name: 'default', label: 'Default Page' },
@@ -126,6 +128,14 @@ site.init({
     stylesheets: ['site'],
     scripts: ['_site-compiled']
   },
+  middleware:[
+    function(site,req,res,next){
+      console.log("Setting base url ");
+      req.baseUrl="http://www.acme.com";
+      return next();
+    }
+
+  ],
 
   afterInit: function(callback) {
     // We're going to do a special console message now that the
